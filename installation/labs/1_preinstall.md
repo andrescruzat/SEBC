@@ -158,3 +158,50 @@ Oct 02 15:35:08 ip-172-31-2-104 ntpd[3767]: 0.0.0.0 c012 02 freq_set kernel 0.00
 Oct 02 15:35:08 ip-172-31-2-104 ntpd[3767]: 0.0.0.0 c011 01 freq_not_set
 
 
+--> Instalar MariaDB
+yum install mariadb-server
+#configuraciones varias...
+[root@ip-172-31-2-104 etc]# systemctl list-unit-files | grep mariadb
+mariadb.service                             enabled
+
+[root@ip-172-31-2-104 etc]# /usr/bin/mysql_secure_installation
+...
+Cleaning up...
+All done!  If you've completed all of the above steps, your MariaDB
+installation should now be secure.
+
+Thanks for using MariaDB!
+
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| amon               |
+| cmf                |
+| hue                |
+| metastore          |
+| mysql              |
+| nav                |
+| navms              |
+| oozie              |
+| performance_schema |
+| rman               |
+| sentry             |
++--------------------+
+12 rows in set (0.00 sec)
+
+- driver descargar y despues...
+mkdir -p /usr/share/java/
+chmod 777 /usr/share/java/
+cp /home/ec2-user/mariadb-java-client-2.1.2.jar /usr/share/java/mysql-connector-java.jar
+
+[root@ip-172-31-2-104 /]# mkdir -p /usr/share/java/
+[root@ip-172-31-2-104 /]# chmod 777 /usr/share/java/
+cd /home
+wget https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.44.tar.gz
+tar zxvf mysql-connector-java-5.1.44.tar.gz
+cp mysql-connector-java-5.1.44/mysql-connector-java-5.1.44-bin.jar /usr/share/java/mysql-connector-java.jar
+
+
+
