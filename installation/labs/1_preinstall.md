@@ -5,6 +5,11 @@ cat /etc/sysctl.conf
 echo "vm.swappiness = 1" >> /etc/sysctl.conf
 echo 1 > /proc/sys/vm/swappiness
 
+#### modificar archivo /etc/sysconfig/grub para que quede permanente
+
+vi /etc/sysconfig/grub
+modificar 
+GRUB_CMDLINE_LINUX=”crashkernel=auto rd.lvm.lv=centos/root rd.lvm.lv=centos/swap rhgb quiet console=ttyS0 transparent_hugepage=never”
 
 --> Estado de unidades montadas
 [root@ip-172-31-2-104 /]# cat /etc/fstab
@@ -160,7 +165,7 @@ Oct 02 15:35:08 ip-172-31-2-104 ntpd[3767]: 0.0.0.0 c011 01 freq_not_set
 
 --> Instalar MariaDB
 yum install mariadb-server
-#configuraciones varias...
+### configuraciones varias... usuario root, pwd instancia de AWS
 [root@ip-172-31-2-104 etc]# systemctl list-unit-files | grep mariadb
 mariadb.service                             enabled
 
@@ -171,6 +176,8 @@ All done!  If you've completed all of the above steps, your MariaDB
 installation should now be secure.
 
 Thanks for using MariaDB!
+
+### crear BD
 
 MariaDB [(none)]> show databases;
 +--------------------+
@@ -247,3 +254,4 @@ Oct 02 21:09:02 ip-172-31-2-104 su[3889]: (to cloudera-scm) root on none
 Oct 02 21:09:07 ip-172-31-2-104 cloudera-scm-server[3862]: Starting cloudera-scm-server: [  OK  ]
 Oct 02 21:09:07 ip-172-31-2-104 systemd[1]: Started LSB: Cloudera SCM Server.
 
+### Comienza instalacion de CDH en el cluster
