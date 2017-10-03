@@ -5,12 +5,6 @@ cat /etc/sysctl.conf
 echo "vm.swappiness = 1" >> /etc/sysctl.conf
 echo 1 > /proc/sys/vm/swappiness
 
-#### modificar archivo /etc/sysconfig/grub para que quede permanente
-
-vi /etc/sysconfig/grub
-modificar 
-GRUB_CMDLINE_LINUX=”crashkernel=auto rd.lvm.lv=centos/root rd.lvm.lv=centos/swap rhgb quiet console=ttyS0 transparent_hugepage=never”
-
 --> Estado de unidades montadas
 [root@ip-172-31-2-104 /]# cat /etc/fstab
 
@@ -62,6 +56,12 @@ tmpfs                    3.2G     0  3.2G   0% /run/user/1000
 always madvise [never]
 [root@ip-172-31-2-104 etc]# cat /sys/kernel/mm/transparent_hugepage/defrag
 always madvise [never]
+
+#### modificar archivo /etc/sysconfig/grub para que quede permanente
+
+vi /etc/sysconfig/grub
+modificar 
+GRUB_CMDLINE_LINUX=”crashkernel=auto rd.lvm.lv=centos/root rd.lvm.lv=centos/swap rhgb quiet console=ttyS0 transparent_hugepage=never”
 
 
 --> Listar configuracion de red
