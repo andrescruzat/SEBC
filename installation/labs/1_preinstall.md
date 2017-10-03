@@ -194,7 +194,6 @@ MariaDB [(none)]> show databases;
 - driver descargar y despues...
 mkdir -p /usr/share/java/
 chmod 777 /usr/share/java/
-cp /home/ec2-user/mariadb-java-client-2.1.2.jar /usr/share/java/mysql-connector-java.jar
 
 [root@ip-172-31-2-104 /]# mkdir -p /usr/share/java/
 [root@ip-172-31-2-104 /]# chmod 777 /usr/share/java/
@@ -203,5 +202,48 @@ wget https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.44
 tar zxvf mysql-connector-java-5.1.44.tar.gz
 cp mysql-connector-java-5.1.44/mysql-connector-java-5.1.44-bin.jar /usr/share/java/mysql-connector-java.jar
 
+--> Descargar repositorio Cloudera
+cd /etc/yum.repos.d/
+wget https://archive.cloudera.com/cm5/redhat/7/x86_64/cm/cloudera-manager.repo
+modificar archivo para la version deseada
 
+
+--> Instalar Java
+yum install oracle-j2sdk1.7
+
+JAVA_HOME=/usr/java/jdk1.7.0_67-cloudera 
+JRE_HOME=/usr/java/jdk1.7.0_67-cloudera 
+PATH=$PATH:$JRE_HOME/bin:$JAVA_HOME/bin 
+export JAVA_HOME 
+export JRE_HOME 
+export PATH
+
+--> Instalar Cloudera
+	
+$ sudo yum install cloudera-manager-daemons cloudera-manager-server
+
+--> ejecutar preparacion de BD
+
+#### /usr/share/cmf/schema/scm_prepare_database.sh database-type [options] database-name username password
+/usr/share/cmf/schema/scm_prepare_database.sh mysql cmf cmf cmf_password
+
+--> iniciar servicio
+
+service cloudera-scm-server start
+###top
+tail -f /var/log/cloudera-scm-server/cloudera-scm-server.log
+
+[root@ip-172-31-2-104 /]# service cloudera-scm-server status
+/etc/init.d/cloudera-scm-server: line 109: pstree: command not found
+? cloudera-scm-server.service - LSB: Cloudera SCM Server
+   Loaded: loaded (/etc/rc.d/init.d/cloudera-scm-server)
+   Active: active (exited) since Mon 2017-10-02 21:09:07 EDT; 12min ago
+     Docs: man:systemd-sysv-generator(8)
+  Process: 3862 ExecStart=/etc/rc.d/init.d/cloudera-scm-server start (code=exited, status=0/SUCCESS)
+
+Oct 02 21:09:02 ip-172-31-2-104 systemd[1]: Starting LSB: Cloudera SCM Server...
+Oct 02 21:09:02 ip-172-31-2-104 cloudera-scm-server[3862]: /etc/rc.d/init.d/cloudera-scm-server: line 109: pstree: command not found
+Oct 02 21:09:02 ip-172-31-2-104 su[3889]: (to cloudera-scm) root on none
+Oct 02 21:09:07 ip-172-31-2-104 cloudera-scm-server[3862]: Starting cloudera-scm-server: [  OK  ]
+Oct 02 21:09:07 ip-172-31-2-104 systemd[1]: Started LSB: Cloudera SCM Server.
 
