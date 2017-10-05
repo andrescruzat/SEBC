@@ -18,7 +18,7 @@ Give the tsquery statement used to chart Hue's CPU utilization?
 R: select cpu_system_rate + cpu_user_rate where category=ROLE and serviceName="hue"
 
 Name all the roles that make up the Hive service
-R: Hive metatstore Server, HiveServer2
+R: Hive metatstore Server, HiveServer2, Gateway
 
 What steps must be completed before integrating Cloudera Manager with Kerberos?
 R: Prerequisites - These instructions assume you know how to install and configure Kerberos, you already have a working Kerberos 
