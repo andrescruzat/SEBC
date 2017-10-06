@@ -46,3 +46,21 @@ repo id                                                         repo name       
 !updates/7/x86_64                                               CentOS-7 - Updates                                                 731
 repolist: 10,547
 
+- listar usuarios y grupos
+[root@ip-172-31-40-99 ec2-user]# cat /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/sbin/nologin
+...
+nscd:x:28:28:NSCD Daemon:/:/sbin/nologin
+ntp:x:38:38::/etc/ntp:/sbin/nologin
+haley:x:2900:1001::/home/haley:/bin/bash
+saturn:x:2800:1002::/home/saturn:/bin/bash
+
+[root@ip-172-31-40-99 ec2-user]# cat /etc/group
+root:x:0:
+bin:x:1:
+...
+nscd:x:28:
+ntp:x:38:
+comets:x:1001:
+planets:x:1002:
