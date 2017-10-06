@@ -2,6 +2,7 @@ El comando terasort me dio problemas aparentemente de memoria y no hubo caso de 
 
 
 [root@ip-172-31-40-99 ec2-user]# time hadoop jar /opt/cloudera/parcels/CDH/lib/hadoop-0.20-mapreduce/hadoop-examples.jar terasort /user/saturn/tgen /user/saturn/tsort
+
 17/10/06 12:55:10 INFO terasort.TeraSort: starting
 17/10/06 12:55:11 INFO hdfs.DFSClient: Created token for saturn: HDFS_DELEGATION_TOKEN owner=saturn@ANDRESCRUZAT.HQ, renewer=yarn, realUser=, issueDate=1507308911493, maxDate=1507913711493, sequenceNumber=12, masterKeyId=6 on 172.31.40.99:8020
 17/10/06 12:55:11 INFO security.TokenCache: Got dt for hdfs://ip-172-31-40-99.us-east-2.compute.internal:8020; Kind: HDFS_DELEGATION_TOKEN, Service: 172.31.40.99:8020, Ident: (token for saturn: HDFS_DELEGATION_TOKEN owner=saturn@ANDRESCRUZAT.HQ, renewer=yarn, realUser=, issueDate=1507308911493, maxDate=1507913711493, sequenceNumber=12, masterKeyId=6)
@@ -1245,6 +1246,7 @@ sys     0m0.355s
 ------------------------------------------
 
 [root@ip-172-31-40-99 ec2-user]# time hadoop jar /opt/cloudera/parcels/CDH/lib/hadoop-0.20-mapreduce/hadoop-examples.jar terasort -Dmapreduce.reduce.memory.mb=8192 /user/saturn/tgen /user/saturn/tsort
+
 17/10/06 13:02:32 INFO terasort.TeraSort: starting
 17/10/06 13:02:33 INFO hdfs.DFSClient: Created token for saturn: HDFS_DELEGATION_TOKEN owner=saturn@ANDRESCRUZAT.HQ, renewer=yarn, realUser=, issueDate=1507309353428, maxDate=1507914153428, sequenceNumber=13, masterKeyId=6 on 172.31.40.99:8020
 17/10/06 13:02:33 INFO security.TokenCache: Got dt for hdfs://ip-172-31-40-99.us-east-2.compute.internal:8020; Kind: HDFS_DELEGATION_TOKEN, Service: 172.31.40.99:8020, Ident: (token for saturn: HDFS_DELEGATION_TOKEN owner=saturn@ANDRESCRUZAT.HQ, renewer=yarn, realUser=, issueDate=1507309353428, maxDate=1507914153428, sequenceNumber=13, masterKeyId=6)
