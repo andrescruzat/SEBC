@@ -1,11 +1,13 @@
 [root@ip-172-31-40-99 ec2-user]# hdfs dfs -ls /user
-Found 7 items
-drwxr-xr-x   - hdfs   supergroup          0 2017-10-06 10:17 /user/haley
+Found 9 items
+drwxr-xr-x   - admin  admin               0 2017-10-06 10:26 /user/admin
+drwxrwxrwx   - haley  supergroup          0 2017-10-06 10:17 /user/haley
+drwxr-xr-x   - hdfs   supergroup          0 2017-10-06 10:26 /user/hdfs
 drwxrwxrwx   - mapred hadoop              0 2017-10-06 10:05 /user/history
 drwxrwxr-t   - hive   hive                0 2017-10-06 10:06 /user/hive
 drwxrwxr-x   - hue    hue                 0 2017-10-06 10:07 /user/hue
 drwxrwxr-x   - oozie  oozie               0 2017-10-06 10:07 /user/oozie
-drwxr-xr-x   - hdfs   supergroup          0 2017-10-06 10:17 /user/saturn
+drwxrwxrwx   - saturn supergroup          0 2017-10-06 10:17 /user/saturn
 drwxr-x--x   - spark  spark               0 2017-10-06 10:06 /user/spark
 
 [root@ip-172-31-38-249 /]# curl -u admin:admin 'http://localhost:7180/api/v14/hosts'
